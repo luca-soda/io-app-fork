@@ -46,6 +46,13 @@ const headerHelpByRoute: Record<TabRoutes, SupportRequestParams> = {
       body: "profile.main.contextualHelpContent"
     }
   },
+  [ROUTES.NEW_PROFILE]: {
+    faqCategories: ["profile"],
+    contextualHelpMarkdown: {
+      title: "profile.main.contextualHelpTitle",
+      body: "profile.main.contextualHelpContent"
+    }
+  },
   [SERVICES_ROUTES.SERVICES_HOME]: {
     faqCategories: ["services"],
     contextualHelpMarkdown: {
@@ -250,6 +257,7 @@ export const HeaderFirstLevelHandler = ({ currentRouteName }: Props) => {
       // TODO: delete this route when the showBarcodeScanSection
       // and isSettingsVisibleAndHideProfileSelector FF will be deleted
       case ROUTES.PROFILE_MAIN:
+      case ROUTES.NEW_PROFILE:
         return {
           title: I18n.t("profile.main.title"),
           type: "singleAction",

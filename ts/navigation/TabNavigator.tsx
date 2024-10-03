@@ -13,6 +13,7 @@ import { ServicesHomeScreen } from "../features/services/home/screens/ServicesHo
 import { useBottomTabNavigatorStyle } from "../hooks/useBottomTabNavigatorStyle";
 import I18n from "../i18n";
 import ProfileMainScreen from "../screens/profile/ProfileMainScreen";
+import NewProfileScreen from "../screens/newProfile/NewProfileScreen";
 import WalletHomeScreen from "../screens/wallet/WalletHomeScreen";
 import { useIOSelector } from "../store/hooks";
 import {
@@ -184,8 +185,8 @@ export const MainTabNavigator = () => {
         />
         {isNewProfileVisibile && (
           <Tab.Screen
-            name={ROUTES.PROFILE_MAIN}
-            component={ProfileMainScreen}
+            name={ROUTES.NEW_PROFILE}
+            component={NewProfileScreen}
             options={{
               title: I18n.t("global.navigator.profile"),
               tabBarIcon: profileIcon
