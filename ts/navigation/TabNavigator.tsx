@@ -13,7 +13,7 @@ import { ServicesHomeScreen } from "../features/services/home/screens/ServicesHo
 import { useBottomTabNavigatorStyle } from "../hooks/useBottomTabNavigatorStyle";
 import I18n from "../i18n";
 import ProfileMainScreen from "../screens/profile/ProfileMainScreen";
-import NewProfileScreen from "../screens/newProfile/NewProfileScreen";
+import NewProfileScreen from "../features/newProfile/screens/NewProfileScreen";
 import WalletHomeScreen from "../screens/wallet/WalletHomeScreen";
 import { useIOSelector } from "../store/hooks";
 import {

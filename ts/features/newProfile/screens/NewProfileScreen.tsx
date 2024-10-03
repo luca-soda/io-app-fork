@@ -2,18 +2,18 @@ import React from "react";
 import { Text, View } from "react-native";
 import * as O from "fp-ts/lib/Option";
 import * as UI from "@pagopa/io-app-design-system";
-import { useIOSelector } from "../../store/hooks";
-import { useIONavigation } from "../../navigation/params/AppParamsList";
+import { useIOSelector } from "../../../store/hooks";
+import { useIONavigation } from "../../../navigation/params/AppParamsList";
 import {
   hasProfileEmailSelector,
   profileEmailSelector,
   profileFiscalCodeSelector,
   profileNameSurnameSelector
-} from "../../store/reducers/profile";
-import I18n from "../../i18n";
-import { IOScrollViewWithLargeHeader } from "../../components/ui/IOScrollViewWithLargeHeader";
-import { ContextualHelpPropsMarkdown } from "../../components/screens/BaseScreenComponent";
-import { FAQsCategoriesType } from "../../utils/faq";
+} from "../../../store/reducers/profile";
+import I18n from "../../../i18n";
+import { IOScrollViewWithLargeHeader } from "../../../components/ui/IOScrollViewWithLargeHeader";
+import { ContextualHelpPropsMarkdown } from "../../../components/screens/BaseScreenComponent";
+import { FAQsCategoriesType } from "../../../utils/faq";
 
 const NewProfileScreen = () => {
   const { navigate } = useIONavigation();
