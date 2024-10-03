@@ -98,6 +98,9 @@ const ROUTES = {
   // Main
   MAIN: "MAIN",
 
+  // New Profile
+  NEW_PROFILE: "NEW_PROFILE",
+
   // Profile
   SETTINGS_MAIN: "SETTINGS_MAIN",
   PROFILE_NAVIGATOR: "PROFILE_NAVIGATOR",

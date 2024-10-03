@@ -17,7 +17,8 @@ import WalletHomeScreen from "../screens/wallet/WalletHomeScreen";
 import { useIOSelector } from "../store/hooks";
 import {
   isNewPaymentSectionEnabledSelector,
-  isSettingsVisibleAndHideProfileSelector
+  isSettingsVisibleAndHideProfileSelector,
+  isNewProfileSectionEnabledSelector
 } from "../store/reducers/backendStatus";
 import { isDesignSystemEnabledSelector } from "../store/reducers/persistedPreferences";
 import { StartupStatusEnum, isStartupLoaded } from "../store/reducers/startup";
@@ -42,11 +43,30 @@ export const MainTabNavigator = () => {
     isSettingsVisibleAndHideProfileSelector
   );
 
+  const isNewProfileVisibile = useIOSelector(
+    isNewProfileSectionEnabledSelector
+  );
+
   const navigateToBarcodeScanScreen = () => {
     navigation.navigate(ROUTES.BARCODE_SCAN);
   };
 
   const tabBarStyle = useBottomTabNavigatorStyle();
+
+  const profileIcon = ({
+    color,
+    focused
+  }: {
+    color: string;
+    focused: boolean;
+  }) => (
+    <TabIconComponent
+      iconName="navProfile"
+      iconNameFocused="navProfileFocused"
+      color={color}
+      focused={focused}
+    />
+  );
 
   return (
     <LoadingSpinnerOverlay
@@ -162,20 +182,23 @@ export const MainTabNavigator = () => {
             )
           }}
         />
+        {isNewProfileVisibile && (
+          <Tab.Screen
+            name={ROUTES.PROFILE_MAIN}
+            component={ProfileMainScreen}
+            options={{
+              title: I18n.t("global.navigator.profile"),
+              tabBarIcon: profileIcon
+            }}
+          />
+        )}
         {!isSettingsVisibleAndHideProfile && (
           <Tab.Screen
             name={ROUTES.PROFILE_MAIN}
             component={ProfileMainScreen}
             options={{
               title: I18n.t("global.navigator.profile"),
-              tabBarIcon: ({ color, focused }) => (
-                <TabIconComponent
-                  iconName="navProfile"
-                  iconNameFocused="navProfileFocused"
-                  color={color}
-                  focused={focused}
-                />
-              )
+              tabBarIcon: profileIcon
             }}
           />
         )}
