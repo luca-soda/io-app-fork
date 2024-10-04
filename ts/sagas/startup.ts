@@ -68,11 +68,7 @@ import { previousInstallationDataDeleteSuccess } from "../store/actions/installa
 import { setMixpanelEnabled } from "../store/actions/mixpanel";
 import { navigateToPrivacyScreen } from "../store/actions/navigation";
 import { clearOnboarding } from "../store/actions/onboarding";
-import {
-  clearCache,
-  profileLoadSuccess,
-  resetProfileState
-} from "../store/actions/profile";
+import { clearCache, resetProfileState } from "../store/actions/profile";
 import {
   startupLoadSuccess,
   startupTransientError

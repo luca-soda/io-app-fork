@@ -18,8 +18,7 @@ import WalletHomeScreen from "../screens/wallet/WalletHomeScreen";
 import { useIOSelector } from "../store/hooks";
 import {
   isNewPaymentSectionEnabledSelector,
-  isSettingsVisibleAndHideProfileSelector,
-  isNewProfileSectionEnabledSelector
+  isSettingsVisibleAndHideProfileSelector
 } from "../store/reducers/backendStatus";
 import { isDesignSystemEnabledSelector } from "../store/reducers/persistedPreferences";
 import { StartupStatusEnum, isStartupLoaded } from "../store/reducers/startup";
