@@ -35,6 +35,7 @@ import { persistedNotificationsReducer } from "../../features/pushNotifications/
 import { profileSettingsReducerInitialState } from "../../features/profileSettings/store/reducers";
 import { itwIdentificationInitialState } from "../../features/itwallet/identification/store/reducers";
 import { cieLoginInitialState } from "../../features/cieLogin/store/reducers";
+import newProfileReducer from "../../features/newProfile/store/reducers";
 import appStateReducer from "./appState";
 import assistanceToolsReducer from "./assistanceTools";
 import authenticationReducer, {
@@ -156,6 +157,7 @@ export const appReducer: Reducer<GlobalState, Action> = combineReducers<
   onboarding: onboardingReducer,
   notifications: persistedNotificationsReducer,
   profile: profileReducer,
+  newProfile: newProfileReducer,
   userDataProcessing: userDataProcessingReducer,
   entities: persistReducer<EntitiesState, Action>(
     entitiesPersistConfig,

@@ -115,6 +115,8 @@ import { handlePendingMessageStateIfAllowed } from "../features/pushNotification
 import { cancellAllLocalNotifications } from "../features/pushNotifications/utils";
 import { handleApplicationStartupTransientError } from "../features/startup/sagas";
 import { isBlockingScreenSelector } from "../features/ingress/store/selectors";
+import { profileLoadSuccess as newProfileLoadsuccess } from "../features/newProfile/store/actions";
+import { InitializedNewProfile } from "../features/newProfile/store/reducers";
 import {
   clearKeychainError,
   keychainError
@@ -401,6 +403,15 @@ export function* initializeApplicationSaga(
     loadProfile,
     backendClient.getProfile
   );
+
+  if (O.isSome(maybeUserProfile)) {
+    // Starting from false because the backend does not save that information
+    const profile = {
+      ...maybeUserProfile.value,
+      enabled: false
+    } as InitializedNewProfile;
+    yield* put(newProfileLoadsuccess(profile));
+  }
 
   if (O.isNone(maybeUserProfile)) {
     yield* call(handleApplicationStartupTransientError, "GET_PROFILE_DOWN");

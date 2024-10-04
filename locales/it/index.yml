@@ -285,6 +285,11 @@ settings:
   informativeBanner: 
     content: Cerchi il Profilo? Lo abbiamo spostato, ora è in alto a destra!
     action: Vai alle Impostazioni
+newProfile:
+  missingEmail: "Non hai ancora inserito l'indirizzo email"
+  nameAndSurname: Nome e cognome
+  fiscalCode: Codice fiscale
+  mail: Email
 profile:
   fiscalCode:
     accessibility:
@@ -485,6 +490,7 @@ profile:
     designSystemEnvironment: Design System sperimentale
     newScanSection: Nuova funzione 'Inquadra'
     sessionRefresh: Attiva il refresh della sessione
+    newProfile: Attiva il nuovo profilo
     appVersion: Versione
     backendVersion: Versione Backend
     debugMode: Modalità debug

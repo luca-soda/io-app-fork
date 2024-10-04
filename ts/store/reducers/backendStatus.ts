@@ -468,6 +468,16 @@ export const isNewPaymentSectionEnabledSelector = createSelector(
       O.getOrElse(() => false)
     )
 );
+
+/**
+ * Return the mocked up configuration about the new profile section enabled/disabled
+ */
+
+export const isNewProfileSectionEnabledSelector = createSelector(
+  backendStatusSelector,
+  (_): boolean => true
+);
+
 /*
 This selector checks that both the new wallet section and the
 new document scan section are included in the tab bar.
@@ -494,6 +504,8 @@ export const isBackendServicesStatusOffSelector = createSelector(
   backendServicesStatusSelector,
   bss => bss.areSystemsDead
 );
+
+//
 
 /**
  * Return the remote config about IT-WALLET enabled/disabled

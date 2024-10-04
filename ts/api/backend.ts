@@ -251,6 +251,16 @@ export function BackendClient(
     response_decoder: getUserProfileDefaultDecoder()
   };
 
+  // New profile API. Is that needed since the API is the same?
+
+  const getNewProfileT: GetUserProfileT = {
+    method: "get",
+    url: () => "/api/v1/profile",
+    query: _ => ({}),
+    headers: tokenHeaderProducer,
+    response_decoder: getUserProfileDefaultDecoder()
+  };
+
   const createOrUpdateProfileT: UpdateProfileT = {
     method: "post",
     url: () => "/api/v1/profile",
@@ -377,6 +387,9 @@ export function BackendClient(
       createFetchRequestForApi(upsertMessageStatusAttributesT, options)
     ),
     getProfile: withBearerToken(createFetchRequestForApi(getProfileT, options)),
+    getNewProfile: withBearerToken(
+      createFetchRequestForApi(getNewProfileT, options)
+    ),
     createOrUpdateProfile: withBearerToken(
       createFetchRequestForApi(createOrUpdateProfileT, options)
     ),
