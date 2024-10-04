@@ -3,9 +3,7 @@ import { Text, View } from "react-native";
 import * as O from "fp-ts/lib/Option";
 import * as UI from "@pagopa/io-app-design-system";
 import { useIOSelector } from "../../store/hooks";
-import { useIONavigation } from "../../navigation/params/AppParamsList";
 import {
-  hasProfileEmailSelector,
   profileEmailSelector,
   profileFiscalCodeSelector,
   profileNameSurnameSelector
@@ -16,9 +14,7 @@ import { ContextualHelpPropsMarkdown } from "../../components/screens/BaseScreen
 import { FAQsCategoriesType } from "../../utils/faq";
 
 const NewProfileScreen = () => {
-  const { navigate } = useIONavigation();
   const profileEmail = useIOSelector(profileEmailSelector);
-  const hasProfileEmail = useIOSelector(hasProfileEmailSelector);
   const nameSurname = useIOSelector(profileNameSurnameSelector);
   const fiscalCode = useIOSelector(profileFiscalCodeSelector);
 

@@ -121,8 +121,6 @@ import { handleApplicationStartupTransientError } from "../features/startup/saga
 import { isBlockingScreenSelector } from "../features/ingress/store/selectors";
 import { profileLoadSuccess as newProfileLoadsuccess } from "../features/newProfile/store/actions";
 import { InitializedNewProfile } from "../features/newProfile/store/reducers";
-import { useIOSelector } from "../store/hooks";
-import { isNewProfileActiveSelector } from "../features/newProfile/store/selectors";
 import {
   clearKeychainError,
   keychainError
