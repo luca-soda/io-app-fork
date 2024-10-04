@@ -23,15 +23,17 @@ import { ReminderStatusEnum } from "../../../../../definitions/backend/ReminderS
 import { PushNotificationsContentTypeEnum } from "../../../../../definitions/backend/PushNotificationsContentType";
 import { GlobalState } from "../../../../store/reducers/types";
 import { ProfileError } from "../../../../store/reducers/profileErrorType";
+import { setEnabledNewProfile } from "../actions/enableNewProfile";
 
-export type ProfileState = pot.Pot<InitializedProfile, ProfileError>;
+export type InitializedNewProfile = InitializedProfile & { enabled: boolean };
 
-const INITIAL_STATE: ProfileState = pot.none;
+export type NewProfileState = pot.Pot<InitializedNewProfile, ProfileError>;
 
+export const INITIAL_STATE: NewProfileState = pot.none;
 // Selectors
 
-export const profileSelector = (state: GlobalState): ProfileState =>
-  state.profile;
+export const profileSelector = (state: GlobalState): NewProfileState =>
+  state.newProfile;
 
 export const isEmailEnabledSelector = createSelector(profileSelector, profile =>
   pot.getOrElse(
@@ -57,7 +59,7 @@ export const getProfileSpidEmail = (
 // return the email address (as a string) if the profile pot is some and its value is of kind InitializedProfile and it has an email
 export const profileEmailSelector = createSelector(
   profileSelector,
-  (profile: ProfileState): O.Option<string> =>
+  (profile: NewProfileState): O.Option<string> =>
     pot.getOrElse(
       pot.map(profile, p => getProfileEmail(p)),
       O.none
@@ -69,7 +71,7 @@ export const profileEmailSelector = createSelector(
  */
 export const profileNameSelector = createSelector(
   profileSelector,
-  (profile: ProfileState): string | undefined =>
+  (profile: NewProfileState): string | undefined =>
     pot.getOrElse(
       pot.map(profile, p => capitalize(p.name)),
       undefined
@@ -81,7 +83,7 @@ export const profileNameSelector = createSelector(
  */
 export const profileFiscalCodeSelector = createSelector(
   profileSelector,
-  (profile: ProfileState): string | undefined =>
+  (profile: NewProfileState): string | undefined =>
     pot.getOrElse(
       pot.map(profile, p => p.fiscal_code),
       undefined
@@ -93,7 +95,7 @@ export const profileFiscalCodeSelector = createSelector(
  */
 export const profileNameSurnameSelector = createSelector(
   profileSelector,
-  (profile: ProfileState): string | undefined =>
+  (profile: NewProfileState): string | undefined =>
     pot.getOrElse(
       pot.map(profile, p => capitalize(`${p.name} ${p.family_name}`)),
       undefined
@@ -107,7 +109,7 @@ export const hasProfileEmail = (user: InitializedProfile): boolean =>
 // return true if the profile has an email
 export const hasProfileEmailSelector = createSelector(
   profileSelector,
-  (profile: ProfileState): boolean =>
+  (profile: NewProfileState): boolean =>
     pot.getOrElse(
       pot.map(profile, p => hasProfileEmail(p)),
       false
@@ -117,7 +119,7 @@ export const hasProfileEmailSelector = createSelector(
 // return the profile services preference mode
 export const profileServicePreferencesModeSelector = createSelector(
   profileSelector,
-  (profile: ProfileState): ServicesPreferencesModeEnum | undefined =>
+  (profile: NewProfileState): ServicesPreferencesModeEnum | undefined =>
     pot.getOrElse(
       pot.map(profile, p => p.service_preferences_settings.mode),
       undefined
@@ -126,7 +128,7 @@ export const profileServicePreferencesModeSelector = createSelector(
 // return if the profile email user is already taken
 export const isProfileEmailAlreadyTakenSelector = createSelector(
   profileSelector,
-  (profile: ProfileState): boolean | undefined =>
+  (profile: NewProfileState): boolean | undefined =>
     pot.getOrElse(
       pot.map(profile, p => p.is_email_already_taken),
       undefined
@@ -157,7 +159,7 @@ export const isProfileFirstOnBoarding = (user: InitializedProfile): boolean =>
 // Same as above, but Selector
 export const isProfileFirstOnBoardingSelector = createSelector(
   profileSelector,
-  (profile: ProfileState): boolean | undefined =>
+  (profile: NewProfileState): boolean | undefined =>
     pot.getOrElse(
       pot.map(profile, p => isProfileFirstOnBoarding(p)),
       undefined
@@ -215,7 +217,7 @@ export const pushNotificationPreviewEnabledSelector = (state: GlobalState) =>
 export const profileNotificationSettingsSelector = createSelector(
   profileSelector,
   (
-    profile: ProfileState
+    profile: NewProfileState
   ):
     | { reminder: boolean | undefined; preview: boolean | undefined }
     | undefined =>
@@ -238,19 +240,26 @@ export const profileNotificationSettingsSelector = createSelector(
 // return the tos version or undefined if ProfileState pot is in an Error state
 export const tosVersionSelector = createSelector(
   profileSelector,
-  (profile: ProfileState): number | undefined =>
+  (profile: NewProfileState): number | undefined =>
     pot.getOrElse(
       pot.map(profile, p => p.accepted_tos_version),
       undefined
     )
 );
 const reducer = (
-  state: ProfileState = INITIAL_STATE,
+  state: NewProfileState = INITIAL_STATE,
   action: Action
-): ProfileState => {
+): NewProfileState => {
   switch (action.type) {
     case getType(resetProfileState):
       return pot.none;
+
+    case getType(setEnabledNewProfile):
+      // return pot.getOrElse({ ...state, ...action.payload }, {} as any);
+      return pot.map(state, p => ({
+        ...p,
+        enabled: action.payload.enabled ?? false
+      }));
 
     case getType(profileLoadRequest):
       return pot.toLoading(state);

@@ -7,7 +7,7 @@ import {
   createAction,
   createStandardAction
 } from "typesafe-actions";
-import { InitializedProfile } from "../../../../../definitions/backend/InitializedProfile";
+import { InitializedNewProfile } from "../reducers";
 
 export const resetProfileState = createStandardAction(
   "NEW_RESET_PROFILE_STATE"
@@ -18,7 +18,7 @@ export const profileLoadRequest = createStandardAction(
 )();
 export const profileLoadSuccess = createStandardAction(
   "NEW_PROFILE_LOAD_SUCCESS"
-)<InitializedProfile>();
+)<InitializedNewProfile>();
 
 export const profileLoadFailure = createAction(
   "NEW_PROFILE_LOAD_FAILURE",

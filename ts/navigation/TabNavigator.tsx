@@ -23,6 +23,7 @@ import {
 } from "../store/reducers/backendStatus";
 import { isDesignSystemEnabledSelector } from "../store/reducers/persistedPreferences";
 import { StartupStatusEnum, isStartupLoaded } from "../store/reducers/startup";
+import { isNewProfileActiveSelector } from "../features/newProfile/store/selectors";
 import { HeaderFirstLevelHandler } from "./components/HeaderFirstLevelHandler";
 import { useIONavigation } from "./params/AppParamsList";
 import { MainTabParamsList } from "./params/MainTabParamsList";
@@ -44,9 +45,7 @@ export const MainTabNavigator = () => {
     isSettingsVisibleAndHideProfileSelector
   );
 
-  const isNewProfileVisibile = useIOSelector(
-    isNewProfileSectionEnabledSelector
-  );
+  const isNewProfileVisibile = useIOSelector(isNewProfileActiveSelector);
 
   const navigateToBarcodeScanScreen = () => {
     navigation.navigate(ROUTES.BARCODE_SCAN);

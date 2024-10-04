@@ -38,6 +38,7 @@ import { ProfileSettingsActions } from "../../features/profileSettings/store/act
 import { IngressScreenActions } from "../../features/ingress/store/actions";
 import { MixpanelFeatureActions } from "../../features/mixpanel/store/actions";
 import { NewProfileActions } from "../../features/newProfile/store/actions";
+import { EnableNewProfileActions } from "../../features/newProfile/store/actions/enableNewProfile";
 import { AnalyticsActions } from "./analytics";
 import { ApplicationActions } from "./application";
 import { AuthenticationActions } from "./authentication";
@@ -119,7 +120,8 @@ export type Action =
   | ProfileSettingsActions
   | IngressScreenActions
   | MixpanelFeatureActions
-  | NewProfileActions;
+  | NewProfileActions
+  | EnableNewProfileActions;
 
 export type Dispatch = DispatchAPI<Action>;
 

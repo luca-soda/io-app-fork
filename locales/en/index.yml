@@ -488,6 +488,7 @@ profile:
     designSystemEnvironment: Experimental Design System
     newScanSection: New 'Scan' feature
     sessionRefresh: Activate Session Refresh
+    newProfile: Activate New Profile
     appVersion: Version
     backendVersion: Backend Version
     debugMode: Debug mode

@@ -59,6 +59,9 @@ import { ITW_ROUTES } from "../../features/itwallet/navigation/routes";
 import { setAutomaticSessionRefresh } from "../../features/fastLogin/store/actions/sessionRefreshActions";
 import { isCieIDLocalFeatureEnabledSelector } from "../../features/cieLogin/store/selectors";
 import { cieIDFeatureSetEnabled } from "../../features/cieLogin/store/actions";
+
+import { isNewProfileActiveSelector } from "../../features/newProfile/store/selectors";
+import { setEnabledNewProfile } from "../../features/newProfile/store/actions/enableNewProfile";
 import DSEnableSwitch from "./components/DSEnableSwitch";
 
 type PlaygroundsNavListItem = {
@@ -314,6 +317,15 @@ const DesignSystemSection = () => {
     [dispatch]
   );
 
+  const isNewProfileActivate = useIOSelector(isNewProfileActiveSelector);
+
+  const dispatchActivateNewProfile = React.useCallback(
+    (enabled: boolean) => {
+      dispatch(setEnabledNewProfile({ enabled }));
+    },
+    [dispatch]
+  );
+
   return (
     <ContentWrapper>
       <ListItemHeader label="Human Interface" />
@@ -342,6 +354,12 @@ const DesignSystemSection = () => {
         label={I18n.t("profile.main.sessionRefresh")}
         value={isAutomaticSessionRefreshToggleActive}
         onSwitchValueChange={dispatchAutomaticSessionRefresh}
+      />
+      <Divider />
+      <ListItemSwitch
+        label={I18n.t("profile.main.newProfile")}
+        value={isNewProfileActivate}
+        onSwitchValueChange={enable => dispatchActivateNewProfile(enable)}
       />
     </ContentWrapper>
   );
