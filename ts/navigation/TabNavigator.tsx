@@ -23,6 +23,7 @@ import { isDesignSystemEnabledSelector } from "../store/reducers/persistedPrefer
 import { StartupStatusEnum, isStartupLoaded } from "../store/reducers/startup";
 import { newProfileEnabled } from "../config";
 import NewProfileScreen from "../features/newProfile/screens";
+import { newProfileOptInSelector } from "../features/newProfile/store/selectors";
 import { HeaderFirstLevelHandler } from "./components/HeaderFirstLevelHandler";
 import { useIONavigation } from "./params/AppParamsList";
 import { MainTabParamsList } from "./params/MainTabParamsList";
@@ -43,6 +44,8 @@ export const MainTabNavigator = () => {
   const isSettingsVisibleAndHideProfile = useIOSelector(
     isSettingsVisibleAndHideProfileSelector
   );
+
+  const isNewProfileVisible = useIOSelector(newProfileOptInSelector);
 
   const navigateToBarcodeScanScreen = () => {
     navigation.navigate(ROUTES.BARCODE_SCAN);
@@ -178,7 +181,7 @@ export const MainTabNavigator = () => {
             )
           }}
         />
-        {newProfileEnabled && (
+        {newProfileEnabled && isNewProfileVisible && (
           <Tab.Screen
             name={ROUTES.NEW_PROFILE}
             component={NewProfileScreen}
