@@ -485,6 +485,7 @@ profile:
     designSystemEnvironment: Design System sperimentale
     newScanSection: Nuova funzione 'Inquadra'
     sessionRefresh: Attiva il refresh della sessione
+    newProfile: Attiva il nuovo profilo
     appVersion: Versione
     backendVersion: Versione Backend
     debugMode: Modalità debug
