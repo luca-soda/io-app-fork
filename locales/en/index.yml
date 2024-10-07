@@ -1165,6 +1165,10 @@ payment:
     editButton: Modifica
     termsAndConditions: Proseguendo dichiari di aver letto e compreso i
     termsAndConditionsLink: Termini e condizioni d'uso e l'Informativa Privacy
+newProfile:
+  fiscalCode: Codice Fiscale
+  mail: Email
+  nameAndSurname: Nome e Cognome
 wallet:
   methodDetails:
     cobadgeTitle: "Debit card"

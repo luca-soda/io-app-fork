@@ -21,6 +21,8 @@ import {
 } from "../store/reducers/backendStatus";
 import { isDesignSystemEnabledSelector } from "../store/reducers/persistedPreferences";
 import { StartupStatusEnum, isStartupLoaded } from "../store/reducers/startup";
+import { newProfileEnabled } from "../config";
+import NewProfileScreen from "../features/newProfile/screens";
 import { HeaderFirstLevelHandler } from "./components/HeaderFirstLevelHandler";
 import { useIONavigation } from "./params/AppParamsList";
 import { MainTabParamsList } from "./params/MainTabParamsList";
@@ -48,6 +50,20 @@ export const MainTabNavigator = () => {
 
   const tabBarStyle = useBottomTabNavigatorStyle();
 
+  const profileIcon = ({
+    color,
+    focused
+  }: {
+    color: string;
+    focused: boolean;
+  }) => (
+    <TabIconComponent
+      iconName="navProfile"
+      iconNameFocused="navProfileFocused"
+      color={color}
+      focused={focused}
+    />
+  );
   return (
     <LoadingSpinnerOverlay
       isLoading={startupLoaded === StartupStatusEnum.ONBOARDING}
@@ -162,20 +178,23 @@ export const MainTabNavigator = () => {
             )
           }}
         />
+        {newProfileEnabled && (
+          <Tab.Screen
+            name={ROUTES.NEW_PROFILE}
+            component={NewProfileScreen}
+            options={{
+              title: I18n.t("global.navigator.profile"),
+              tabBarIcon: profileIcon
+            }}
+          />
+        )}
         {!isSettingsVisibleAndHideProfile && (
           <Tab.Screen
             name={ROUTES.PROFILE_MAIN}
             component={ProfileMainScreen}
             options={{
               title: I18n.t("global.navigator.profile"),
-              tabBarIcon: ({ color, focused }) => (
-                <TabIconComponent
-                  iconName="navProfile"
-                  iconNameFocused="navProfileFocused"
-                  color={color}
-                  focused={focused}
-                />
-              )
+              tabBarIcon: profileIcon
             }}
           />
         )}
