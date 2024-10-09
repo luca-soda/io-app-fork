@@ -485,6 +485,7 @@ profile:
     designSystemEnvironment: Design System sperimentale
     newScanSection: Nuova funzione 'Inquadra'
     sessionRefresh: Attiva il refresh della sessione
+    newProfile: Attiva il nuovo profilo
     appVersion: Versione
     backendVersion: Versione Backend
     debugMode: Modalità debug
@@ -1164,6 +1165,10 @@ payment:
     editButton: Modifica
     termsAndConditions: Proseguendo dichiari di aver letto e compreso i
     termsAndConditionsLink: Termini e condizioni d'uso e l'Informativa Privacy
+newProfile:
+  fiscalCode: Codice Fiscale
+  mail: Email
+  nameAndSurname: Nome e Cognome
 wallet:
   methodDetails:
     cobadgeTitle: "Carta di debito"

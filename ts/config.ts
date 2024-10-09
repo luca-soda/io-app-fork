@@ -75,6 +75,9 @@ export const isPlaygroundsEnabled: boolean =
 export const euCovidCertificateEnabled: boolean =
   Config.EU_COVID_CERT_ENABLED === "YES";
 
+// New Profile feature flag
+export const newProfileEnabled: boolean = Config.NEW_PROFILE_ENABLED === "YES";
+
 // Zendesk Feature Flag
 export const zendeskEnabled: boolean = Config.ZENDESK_ENABLED === "YES";
 

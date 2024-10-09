@@ -483,6 +483,7 @@ profile:
     designSystemEnvironment: Experimental Design System
     newScanSection: New 'Scan' feature
     sessionRefresh: Activate Session Refresh
+    newProfile: Activate New Profile
     appVersion: Version
     backendVersion: Backend Version
     debugMode: Debug mode
@@ -1164,6 +1165,10 @@ payment:
     editButton: Modifica
     termsAndConditions: Proseguendo dichiari di aver letto e compreso i
     termsAndConditionsLink: Termini e condizioni d'uso e l'Informativa Privacy
+newProfile:
+  fiscalCode: Codice Fiscale
+  mail: Email
+  nameAndSurname: Nome e Cognome
 wallet:
   methodDetails:
     cobadgeTitle: "Debit card"

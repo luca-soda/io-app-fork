@@ -46,6 +46,13 @@ const headerHelpByRoute: Record<TabRoutes, SupportRequestParams> = {
       body: "profile.main.contextualHelpContent"
     }
   },
+  [ROUTES.NEW_PROFILE]: {
+    faqCategories: ["profile"],
+    contextualHelpMarkdown: {
+      title: "profile.main.contextualHelpTitle",
+      body: "profile.main.contextualHelpContent"
+    }
+  },
   [SERVICES_ROUTES.SERVICES_HOME]: {
     faqCategories: ["services"],
     contextualHelpMarkdown: {
