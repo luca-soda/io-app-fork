@@ -1169,6 +1169,7 @@ newProfile:
   fiscalCode: Codice Fiscale
   mail: Email
   nameAndSurname: Nome e Cognome
+  requestProfileDeletion: Richiedi la cancellazione del profilo
 wallet:
   methodDetails:
     cobadgeTitle: "Carta di debito"

@@ -3,9 +3,9 @@ import { Text, View } from "react-native";
 import * as O from "fp-ts/lib/Option";
 import * as UI from "@pagopa/io-app-design-system";
 import { ListItemSwitch } from "@pagopa/io-app-design-system";
-import { ActionType, isActionOf } from "typesafe-actions";
-import { put, take } from "typed-redux-saga/macro";
-import { useIOSelector } from "../../../store/hooks";
+import { ActionType, getType, isActionOf } from "typesafe-actions";
+import { call, put, select, take, takeLatest } from "typed-redux-saga/macro";
+import { useIODispatch, useIOSelector } from "../../../store/hooks";
 import {
   profileEmailSelector,
   profileFiscalCodeSelector,
@@ -18,8 +18,6 @@ import { FAQsCategoriesType } from "../../../utils/faq";
 import { useOnFirstRender } from "../../../utils/hooks/useOnFirstRender";
 import { loadUserDataProcessing } from "../../../store/actions/userDataProcessing";
 import { UserDataProcessingChoiceEnum } from "../../../../definitions/backend/UserDataProcessingChoice";
-import { useIONavigation } from "../../../navigation/params/AppParamsList";
-import ROUTES from "../../../navigation/routes";
 
 const NewProfileScreen = () => {
   const profileEmail = useIOSelector(profileEmailSelector);
@@ -32,7 +30,7 @@ const NewProfileScreen = () => {
   const [isProfileDeletionLoading, setProfileDeletionLoading] =
     useState<boolean>(false);
 
-  const navigation = useIONavigation();
+  const dispatch = useIODispatch();
 
   useOnFirstRender(() => {
     loadingUserDeletingData();
@@ -164,9 +162,6 @@ const NewProfileScreen = () => {
               label={I18n.t("newProfile.requestProfileDeletion")}
               value={isProfileDeletionRequested}
               disabled={isProfileDeletionDisabled}
-              onSwitchValueChange={() => {
-                navigation.navigate(ROUTES.PROFILE_DELETION);
-              }}
             />
           )}
         </UI.ContentWrapper>
