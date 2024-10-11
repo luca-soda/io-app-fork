@@ -3,9 +3,9 @@ import { Text, View } from "react-native";
 import * as O from "fp-ts/lib/Option";
 import * as UI from "@pagopa/io-app-design-system";
 import { ListItemSwitch } from "@pagopa/io-app-design-system";
-import { ActionType, getType, isActionOf } from "typesafe-actions";
-import { call, put, select, take, takeLatest } from "typed-redux-saga/macro";
-import { useIODispatch, useIOSelector } from "../../../store/hooks";
+import { ActionType, isActionOf } from "typesafe-actions";
+import { put, take } from "typed-redux-saga/macro";
+import { useIOSelector } from "../../../store/hooks";
 import {
   profileEmailSelector,
   profileFiscalCodeSelector,
@@ -29,8 +29,6 @@ const NewProfileScreen = () => {
     useState<boolean>(false);
   const [isProfileDeletionLoading, setProfileDeletionLoading] =
     useState<boolean>(false);
-
-  const dispatch = useIODispatch();
 
   useOnFirstRender(() => {
     loadingUserDeletingData();
