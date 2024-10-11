@@ -60,7 +60,7 @@ import { setAutomaticSessionRefresh } from "../../features/fastLogin/store/actio
 import { isCieIDLocalFeatureEnabledSelector } from "../../features/cieLogin/store/selectors";
 import { cieIDFeatureSetEnabled } from "../../features/cieLogin/store/actions";
 import { newProfileOptInSelector } from "../../features/newProfile/store/selectors";
-import { setNewProfileOptIn } from "../../features/newProfile/store/actions/optInActions";
+import { setNewProfileOptIn } from "../../features/newProfile/store/actions";
 import DSEnableSwitch from "./components/DSEnableSwitch";
 
 type PlaygroundsNavListItem = {
