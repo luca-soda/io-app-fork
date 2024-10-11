@@ -55,8 +55,8 @@ import {
 
 import {
   newProfileOptInReducer,
-  NewProfileOptInState
-} from "../../../newProfile/store/reducers/optInReducer";
+  NewProfileState
+} from "../../../newProfile/store/reducers";
 
 type LoginFeaturesState = {
   testLogin: TestLoginState;
@@ -80,7 +80,7 @@ export type FeaturesState = {
   profileSettings: ProfileSettingsState & PersistPartial;
   mixpanel: MixpanelState;
   ingress: IngressScreenState;
-  newProfile: NewProfileOptInState;
+  newProfile: NewProfileState;
 };
 
 export type PersistedFeaturesState = FeaturesState & PersistPartial;

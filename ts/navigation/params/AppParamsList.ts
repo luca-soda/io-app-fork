@@ -117,6 +117,7 @@ export type AppParamsList = {
   [PaymentsTransactionBizEventsRoutes.PAYMENT_TRANSACTION_BIZ_EVENTS_NAVIGATOR]: NavigatorScreenParams<PaymentsTransactionBizEventsParamsList>;
 
   [ITW_ROUTES.MAIN]: NavigatorScreenParams<ItwParamsList>;
+  [ROUTES.PROFILE_DELETION]: undefined;
 };
 
 /**

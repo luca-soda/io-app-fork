@@ -18,8 +18,6 @@ import { FAQsCategoriesType } from "../../../utils/faq";
 import { useOnFirstRender } from "../../../utils/hooks/useOnFirstRender";
 import { loadUserDataProcessing } from "../../../store/actions/userDataProcessing";
 import { UserDataProcessingChoiceEnum } from "../../../../definitions/backend/UserDataProcessingChoice";
-import { useIONavigation } from "../../../navigation/params/AppParamsList";
-import ROUTES from "../../../navigation/routes";
 
 const NewProfileScreen = () => {
   const profileEmail = useIOSelector(profileEmailSelector);
@@ -31,8 +29,6 @@ const NewProfileScreen = () => {
     useState<boolean>(false);
   const [isProfileDeletionLoading, setProfileDeletionLoading] =
     useState<boolean>(false);
-
-  const navigation = useIONavigation();
 
   useOnFirstRender(() => {
     loadingUserDeletingData();
@@ -164,9 +160,6 @@ const NewProfileScreen = () => {
               label={I18n.t("newProfile.requestProfileDeletion")}
               value={isProfileDeletionRequested}
               disabled={isProfileDeletionDisabled}
-              onSwitchValueChange={() => {
-                navigation.navigate(ROUTES.PROFILE_DELETION);
-              }}
             />
           )}
         </UI.ContentWrapper>
